@@ -11,19 +11,25 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
     const root = document.getElementById("root");
-
     function App() {
-      const [counter, setCounter] = React.useState(0);
-      const onClick = () => {
-        //setCounter(counter += 1);
-        // 上記なように直で値を更新するのではなく下記なように現在の値を呼び出して更新した方がいい。
-        // 理由としては内部のコード以外に外部で値が更新される可能性もあるので。
-        setCounter((current) => (current += 1));
+      const [minutes, setMinutes] = React.useState();
+      const onChange = (event) => {
+        setMinutes(event.target.value);
       };
       return (
         <div>
-          <h3>Total Clcicks: {counter}</h3>
-          <button onClick={onClick}>Clcick me </button>
+          <h1 className="hi">Super Converter</h1>
+          <label htmlFor="minutes">Minutes</label>
+          <input
+            value={minutes}
+            id="minutes"
+            placeholder="Minutes"
+            type="number"
+            onChange={onChange}
+          />
+          <h4>You wnat to convert {minutes}</h4>
+          <labe htmlFor="hours">Hours</labe>
+          <input id="hours" placeholder="Hours" type="number" />
         </div>
       );
     }
